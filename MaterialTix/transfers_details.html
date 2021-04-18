@@ -3,7 +3,7 @@
 <head>
 	<title>Tixati Web Interface</title>
 	<!--Import materialize.css-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/custom.css">
@@ -14,50 +14,48 @@
 </head>
 
 <script>
-<!--
-function udctrls()
-{
-	var inputs = document.getElementsByClassName("selection");
-	var sel = 0;
-	for(var i=inputs.length-1; i>=0; i--)
+	<!--
+	function udctrls()
 	{
-		if(inputs[i].checked) sel=1;
-	}
-	var btns = document.getElementsByClassName("selctrl");
-	for(var i=btns.length-1; i>=0; i--)
-	{
-		if(sel) btns[i].disabled=false;
-		else btns[i].disabled=true;
-	}
+		var inputs = document.getElementsByClassName("selection");
+		var sel = 0;
+		for(var i=inputs.length-1; i>=0; i--)
+		{
+			if(inputs[i].checked) sel=1;
+		}
+		var btns = document.getElementsByClassName("selctrl");
+		for(var i=btns.length-1; i>=0; i--)
+		{
+			if(sel) btns[i].disabled=false;
+			else btns[i].disabled=true;
+		}
 
 
-}
+	}
 //-->
 </script>
 
 <body onload="udctrls()">
-	<div class="navbar-fixed">
-		<nav>
-			<div class="nav-wrapper blue-grey darken-2">
-				<a href="/home" class="brand-logo">Tixati</a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="/home">Home</a></li>
-					<li><a href="/transfers">Transfers</a></li>
-					<li><a href="/log">Log</a></li>
-					<li><a href="/settings">Settings</a></li>
-					<li><a href="/help">Help</a></li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li><a href="/home">Home</a></li>
-					<li><a href="/transfers">Transfers</a></li>
-					<li><a href="/log">Log</a></li>
-					<li><a href="/settings">Settings</a></li>
-					<li><a href="/help">Help</a></li>
-				</ul>
-			</div>
-		</nav>
-	</div>
+
+	<nav>
+		<div class="nav-wrapper blue-grey darken-2">
+			<a href="/transfers" class="brand-logo">Tixati</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			<ul class="right hide-on-med-and-down">
+				
+				<li><a href="/transfers">Transfers</a></li>
+				<li><a href="/log">Log</a></li>
+				<li><a href="/settings">Settings</a></li>
+			</ul>
+			<ul class="side-nav" id="mobile-demo">
+				
+				<li><a href="/transfers">Transfers</a></li>
+				<li><a href="/log">Log</a></li>
+				<li><a href="/settings">Settings</a></li>
+
+			</ul>
+		</div>
+	</nav>
 	<br />
 
 	<div class="container">
@@ -116,6 +114,38 @@ function udctrls()
 							</div>
 						</div>
 					</div>
+					<table class="hide-on-small-only bordered">
+						<tr>
+							<th></th>
+							<th>Total</th>
+							<th>File</th>
+							<th>Protocol</th>
+						</tr>
+						<tr>
+							<th>Bytes In</th>
+							<td>$in_bytes_total$</td>
+							<td>$in_bytes_file$</td>
+							<td>$in_bytes_protocol$</td>
+						</tr>
+						<tr>
+							<th>Bytes Out</th>
+							<td>$out_bytes_total$</td>
+							<td>$out_bytes_file$</td>
+							<td>$out_bytes_protocol$</td>
+						</tr>
+						<tr>
+							<th>B/s In</th>
+							<td>$in_bps_total$</td>
+							<td>$in_bps_file$</td>
+							<td>$in_bps_protocol$</td>
+						</tr>
+						<tr>
+							<th>B/s Out</th>
+							<td>$out_bps_total$</td>
+							<td>$out_bps_file$</td>
+							<td>$out_bps_protocol$</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -136,7 +166,7 @@ function udctrls()
 								var bytes = (html.find("div#$guid$bytes").html());
 								var status = (html.find("div#$guid$status").html());
 								var prog = (html.find("div#$guid$status").html());
-								$('#$guid$prog').css('width' , prog.replace(/ *\([^)]*\) */g, ""));
+								$('#$guid$prog').css('width' ,  prog.replace(/ *\([^)]*\) */g, ""));
 								$('#$guid$prog').removeClass( "indeterminate").addClass( "determinate");
 								$('#$guid$priority').text(priority);
 								$('#$guid$bytes').text(bytes);
@@ -169,7 +199,7 @@ function udctrls()
 								<div class="container">
 									<div class="row">
 										<div class="col s12 center">
-											<label for="priority">Priority</label>  
+											<label for="priority">Priority</label>    
 											<select name="priority" class="input-field">
 												<option value="1000">Ultra High</option>
 												<option value="500">Very High</option>
@@ -196,7 +226,7 @@ function udctrls()
 												<option value="50">On</option>
 												<option value="0" selected>Off</option>
 											</select>
-											<button class="waves-effect waves-light btn blue-grey darken-1" type="submit" name="update_priority">Apply</button>
+											<button class="waves-effect waves-light btn" type="submit" name="update_priority">Apply</button>
 										</div>
 									</div>
 								</div>
@@ -208,121 +238,121 @@ function udctrls()
 		</div>
 	</form>
 	<div id="log"><div id="progbar" class="center">
-		<div class="container">
-			<br><br><br><br><br><br>
-			<div class="preloader-wrapper big active">
-				<div class="spinner-layer spinner-green-only">
-					<div class="circle-clipper left">
-						<div class="circle"></div>
-					</div><div class="gap-patch">
-					<div class="circle"></div>
-				</div><div class="circle-clipper right">
-				<div class="circle"></div>
-			</div>
-		</div>
-	</div>
+<div class="container">
+<br><br><br><br><br><br>
+  <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-green-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
 </div>
 </div></div>
-<div class="container" id="actions">
-	<div class="row">
-		<div class="center">
-			<form method="post" action="/transfers/$guid$/details/action">
-				<button type="submit" name="start" class="btn waves-effect waves-light green"><i class="fa fa-play"></i></button>
-				<button type="submit" name="stop" class="btn waves-effect waves-light yellow darken-2"><i class="fa fa-stop"></i></button>
-				<button type="submit" name="remove" class="btn waves-effect waves-light yellow darken-4"><i class="fa fa-minus"></i></button>
-				<button type="submit" name="delete" class="btn waves-effect waves-light red"><i class="fa fa-times"></i></button>
-			</form>
-		</div>
-	</div>
-	<form method="post" action="/transfers/$guid$/options/action">
+	<div class="container" id="actions">
 		<div class="row">
-			<div class="col s12 m6 offset-m3">
-
-				<ul class="collapsible popout center" data-collapsible="accordion">
-					<li>
-						<div class="collapsible-header">Ratio Limits</div>
-						<div class="collapsible-body">
-							<div class="container">
-								<label>Ratio Limit</label>									
-								<select name="ratiolimit" id="ratiolimit">
-									<!--select ratiolimit-->
-								</select>
-								<br>
-								<label>Seed Limit</label>									
-								<select name="seedlimit" id="seedlimit">
-									<!--select seedlimit-->
-								</select>
-
-								<button class="waves-effect waves-light btn blue-grey darken-1 " type="submit" name="update_ullimits">Apply</button>
-								<br><br>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header">Seeding Options</div>
-						<div class="collapsible-body">
-							<div class="container">
-								<label>Constant Seeding</label>
-								<select name="constseeding" id="constseeding">
-									<!--select constseeding-->
-								</select>
-								<button class="waves-effect waves-light btn blue-grey darken-1 " type="submit" name="update_constseeding">Apply</button>
-								<br><br>
-								<label>Super Seeding</label>
-								<select name="superseeding">
-									<!--select superseeding-->
-								</select>
-								<button class="waves-effect waves-light btn blue-grey darken-1 " type="submit" name="update_superseeding" Value="Apply">Apply</button>
-								<br><br>
-							</div>
-						</div>
-					</li>
-				</ul>
+			<div class="center">
+				<form method="post" action="/transfers/$guid$/details/action">
+					<button type="submit" name="start" class="btn waves-effect waves-light green"><i class="fa fa-play"></i></button>
+					<button type="submit" name="stop" class="btn waves-effect waves-light yellow darken-2"><i class="fa fa-stop"></i></button>
+					<button type="submit" name="remove" class="btn waves-effect waves-light yellow darken-4"><i class="fa fa-minus"></i></button>
+					<button type="submit" name="delete" class="btn waves-effect waves-light red"><i class="fa fa-times"></i></button>
+				</form>
 			</div>
 		</div>
-	</form>
-</div>
+		<form method="post" action="/transfers/$guid$/options/action">
+			<div class="row">
+				<div class="col s12 m6 offset-m3">
 
-<!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
-<script type="text/javascript" src="/init.js"></script>
-<script type="text/javascript">
-	setInterval(function(){
-		jQuery.ajax({
-			url: "filesprog",
-			success: function(result) {
-				var html = jQuery('<div>').html(result);
-				var filename = (html.find("div#$guid$name").html());
-				var fileguid = (html.find("div#$guid$guid").html());
-				var shortstatus = (html.find("div#shortstatus").html());
-				var bytes_complete = (html.find("div#bytes_complete").html());
-				var bytes_remaining = (html.find("div#bytes_remaining").html());
-				var bytes_total = (html.find("div#bytes_total").html());
-				var seeds = (html.find("div#seeds").html());
-				var peers = (html.find("div#peers").html());
-				var availability = (html.find("div#availability").html());
-				var ul_ratio = (html.find("div#ul_ratio").html());
-				var swarm_avg_dlbps = (html.find("div#swarm_avg_dlbps").html());
-				var local_avg_dlbps = (html.find("div#local_avg_dlbps").html());
-				var elapsed_time = (html.find("div#elapsed_time").html());
-				var remaining_time = (html.find("div#remaining_time").html());
-				$('#$guid$name').text(filename);
-				$('#$guid$guid').text(fileguid);
-				$('#shortstatus').text(shortstatus);
-				$('#bytes_complete').text(bytes_complete);
-				$('#bytes_remaining').text(bytes_remaining);
-				$('#bytes_total').text(bytes_total);
-				$('#seeds').text(seeds);
-				$('#peers').text(peers);
-				$('#availability').text(availability);
-				$('#ul_ratio').text(ul_ratio);
-				$('#swarm_avg_dlbps').text(swarm_avg_dlbps);
-				$('#local_avg_dlbps').text(local_avg_dlbps);
-				$('#elapsed_time').text(elapsed_time);
-				$('#remaining_time').text(remaining_time);
-			},
-		});
+					<ul class="collapsible popout center" data-collapsible="accordion">
+						<li>
+							<div class="collapsible-header">Ratio Limits</div>
+							<div class="collapsible-body">
+								<div class="container">
+									<label>Ratio Limit</label>									
+									<select name="ratiolimit" id="ratiolimit">
+										<!--select ratiolimit-->
+									</select>
+									<br>
+									<label>Seed Limit</label>									
+									<select name="seedlimit" id="seedlimit">
+										<!--select seedlimit-->
+									</select>
+
+									<button class="waves-effect waves-light btn" type="submit" name="update_ullimits">Apply</button>
+									<br><br>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">Seeding Options</div>
+							<div class="collapsible-body">
+								<div class="container">
+									<label>Constant Seeding</label>
+									<select name="constseeding" id="constseeding">
+										<!--select constseeding-->
+									</select>
+									<button class="waves-effect waves-light btn" type="submit" name="update_constseeding">Apply</button>
+									<br><br>
+									<label>Super Seeding</label>
+									<select name="superseeding">
+										<!--select superseeding-->
+									</select>
+									<button class="waves-effect waves-light btn" type="submit" name="update_superseeding" Value="Apply">Apply</button>
+									<br><br>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/init.js"></script>
+	<script type="text/javascript">
+		setInterval(function(){
+			jQuery.ajax({
+				url: "filesprog",
+				success: function(result) {
+					var html = jQuery('<div>').html(result);
+					var filename = (html.find("div#$guid$name").html());
+					var fileguid = (html.find("div#$guid$guid").html());
+					var shortstatus = (html.find("div#shortstatus").html());
+					var bytes_complete = (html.find("div#bytes_complete").html());
+					var bytes_remaining = (html.find("div#bytes_remaining").html());
+					var bytes_total = (html.find("div#bytes_total").html());
+					var seeds = (html.find("div#seeds").html());
+					var peers = (html.find("div#peers").html());
+					var availability = (html.find("div#availability").html());
+					var ul_ratio = (html.find("div#ul_ratio").html());
+					var swarm_avg_dlbps = (html.find("div#swarm_avg_dlbps").html());
+					var local_avg_dlbps = (html.find("div#local_avg_dlbps").html());
+					var elapsed_time = (html.find("div#elapsed_time").html());
+					var remaining_time = (html.find("div#remaining_time").html());
+					$('#$guid$name').text(filename);
+					$('#$guid$guid').text(fileguid);
+					$('#shortstatus').text(shortstatus);
+					$('#bytes_complete').text(bytes_complete);
+					$('#bytes_remaining').text(bytes_remaining);
+					$('#bytes_total').text(bytes_total);
+					$('#seeds').text(seeds);
+					$('#peers').text(peers);
+					$('#availability').text(availability);
+					$('#ul_ratio').text(ul_ratio);
+					$('#swarm_avg_dlbps').text(swarm_avg_dlbps);
+					$('#local_avg_dlbps').text(local_avg_dlbps);
+					$('#elapsed_time').text(elapsed_time);
+					$('#remaining_time').text(remaining_time);
+				},
+			});
 }, 2500);
 </script>
 <script type="text/javascript">
